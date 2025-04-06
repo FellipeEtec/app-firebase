@@ -8,7 +8,7 @@ import kotlinx.coroutines.tasks.await
 
 class UserRepository(
     db: FirebaseFirestore = Firebase.firestore
-) : Repository<User> {
+) : FirestoreRepository<User> {
     override val collection = db.collection("users")
 
     override suspend fun insert(doc: User): Boolean {
