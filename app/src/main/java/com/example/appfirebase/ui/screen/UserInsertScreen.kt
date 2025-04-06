@@ -1,4 +1,4 @@
-package com.example.appfirebase.ui.screens
+package com.example.appfirebase.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.appfirebase.ui.ViewModelProvider
-import com.example.appfirebase.ui.viewmodels.UserInsertViewModel
+import com.example.appfirebase.ui.viewmodel.UserInsertViewModel
 
 @Composable
 fun UserInsertScreen(
