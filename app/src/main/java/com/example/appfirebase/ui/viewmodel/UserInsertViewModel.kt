@@ -16,7 +16,13 @@ class UserInsertViewModel(private val repository: UserRepository) : ViewModel() 
     }
 
     fun verifySavable(): Boolean {
-        return state.name.isNotBlank()
+        return (
+                state.firstName.isNotBlank() &&
+                state.lastName.isNotBlank() &&
+                android.util.Patterns.EMAIL_ADDRESS.matcher(state.email).matches() &&
+                state.phone.filter { it.isDigit() }.length in 10..11 &&
+                state.age in 13..100
+        )
     }
 
     fun save(): Boolean {

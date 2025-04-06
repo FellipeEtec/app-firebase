@@ -32,8 +32,8 @@ fun UserInsertScreen(
         )
 
         TextField(
-            value = user.state.name,
-            onValueChange = { user.updateUiState(user.state.copy(name = it)) },
+            value = user.state.firstName,
+            onValueChange = { user.updateUiState(user.state.copy(firstName = it)) },
             label = {
                 Text("Nome")
             }
