@@ -23,6 +23,10 @@ class UserInsertViewModel(private val repository: UserRepository) : ViewModel() 
         if (!verifySavable())
             return false
 
-        return repository.insertUser(state)
+        val result = repository.insertUser(state)
+
+        state = User()
+
+        return result
     }
 }

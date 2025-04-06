@@ -41,6 +41,7 @@ fun UserInsertScreen(
 
         Button(
             onClick = {
+                user.save()
             }
         ) {
             Text("Enviar")
