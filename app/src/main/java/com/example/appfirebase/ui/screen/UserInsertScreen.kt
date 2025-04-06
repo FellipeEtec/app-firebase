@@ -3,13 +3,18 @@ package com.example.appfirebase.ui.screen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -27,6 +32,9 @@ fun UserInsertScreen(
     user: UserInsertViewModel = viewModel(factory = ViewModelProvider.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
+
+    var submit by remember { mutableStateOf(false) }
+    var success by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -95,14 +103,27 @@ fun UserInsertScreen(
             )
         }
 
-        Button(
-            onClick = {
-                coroutineScope.launch {
-                    user.save()
-                }
-            }
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Cadastrar")
+            Text(
+                text =
+                    if (!submit) ""
+                    else if (success) "Cadastrado com sucesso"
+                    else "Não foi possível cadastrar"
+            )
+            Button(
+                onClick = {
+                    coroutineScope.launch {
+                        success = user.save()
+                    }
+
+                    submit = true
+                }
+            ) {
+                Text("Cadastrar")
+            }
         }
     }
 }
