@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -17,6 +18,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,7 +36,7 @@ fun UserInsertScreen(
     val coroutineScope = rememberCoroutineScope()
 
     var submit by remember { mutableStateOf(false) }
-    var success by remember { mutableStateOf(false) }
+    var success by remember { mutableStateOf<Boolean?>(null) }
 
     Column(
         modifier = modifier
@@ -109,8 +111,8 @@ fun UserInsertScreen(
         ) {
             Text(
                 text =
-                    if (!submit) ""
-                    else if (success) "Cadastrado com sucesso"
+                    if (!submit || success === null) ""
+                    else if (success == true) "Cadastrado com sucesso"
                     else "Não foi possível cadastrar"
             )
             Button(
@@ -120,9 +122,15 @@ fun UserInsertScreen(
                     }
 
                     submit = true
-                }
+                },
+                shape = RoundedCornerShape(8.dp)
             ) {
-                Text("Cadastrar")
+                Text(
+                    text = "Cadastrar",
+                    modifier = Modifier.padding(horizontal = 24.dp),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
     }
