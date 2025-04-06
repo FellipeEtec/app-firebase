@@ -29,7 +29,9 @@ fun UserInsertScreen(
     val coroutineScope = rememberCoroutineScope()
 
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -80,8 +82,11 @@ fun UserInsertScreen(
                 onValueChange = {
                     if (it.isEmpty())
                         user.updateUiState(user.state.copy(age = null))
-                    else
-                        user.updateUiState(user.state.copy(age = it.toInt()))
+                    else {
+                        try {
+                            user.updateUiState(user.state.copy(age = it.toInt()))
+                        } catch (_: Exception) {}
+                    }
                 },
                 label = {
                     Text("Idade")

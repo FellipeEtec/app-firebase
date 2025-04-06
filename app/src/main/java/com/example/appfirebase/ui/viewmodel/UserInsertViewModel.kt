@@ -16,7 +16,7 @@ class UserInsertViewModel(private val repository: UserRepository) : ViewModel() 
     }
 
     suspend fun save(): Boolean {
-        if(repository.insertUser(state)) {
+        if(repository.insert(state)) {
             state = User()
             return true
         }
