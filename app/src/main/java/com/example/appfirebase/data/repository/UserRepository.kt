@@ -1,8 +1,10 @@
 package com.example.appfirebase.data.repository
 
 import com.example.appfirebase.data.model.User
+import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.tasks.await
 
@@ -21,5 +23,17 @@ class UserRepository(
         } catch (_: Exception) {
             false
         }
+    }
+
+    suspend fun get(): Task<QuerySnapshot> {
+        return collection
+            .get()
+            .addOnSuccessListener { result ->
+
+                null
+            }
+            .addOnFailureListener { exception ->
+                null
+            }
     }
 }

@@ -13,48 +13,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.appfirebase.navigation.AppRoot
 import com.example.appfirebase.ui.screen.UserInsertScreen
 import com.example.appfirebase.ui.theme.AppFirebaseTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // enableEdgeToEdge()
         setContent {
             AppFirebaseTheme {
-                val focusManager = LocalFocusManager.current
-
-                Scaffold(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .pointerInput(Unit) {
-                            detectTapGestures(
-                                onTap = {
-                                    focusManager.clearFocus()
-                                }
-                            )
-                        }
-                ) { innerPadding ->
-                    App(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                AppRoot()
             }
         }
     }
-}
-
-@Composable
-fun App(modifier: Modifier = Modifier) {
-    UserInsertScreen(
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun AppPreview() {
     AppFirebaseTheme {
-        App()
+        AppRoot()
     }
 }

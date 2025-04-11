@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
+
+    // Navigation
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -61,4 +64,8 @@ dependencies {
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Navigation
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 }

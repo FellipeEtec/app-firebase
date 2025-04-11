@@ -23,14 +23,20 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.appfirebase.ui.ViewModelProvider
 import com.example.appfirebase.ui.viewmodel.UserInsertViewModel
 import com.example.appfirebase.util.PhoneVisualTransformation
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
+
+@Serializable
+object UserInsertScreen
 
 @Composable
 fun UserInsertScreen(
     modifier: Modifier = Modifier,
+    navController: NavController,
     user: UserInsertViewModel = viewModel(factory = ViewModelProvider.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
