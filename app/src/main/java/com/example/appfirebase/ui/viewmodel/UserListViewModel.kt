@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 class UserListViewModel(private val repository: UserRepository) : ViewModel() {
     private val _state = MutableStateFlow<List<User>>(emptyList())
     val state = _state.asStateFlow()
-    var loading = true
+    var isGettingUsers = true
 
     fun getUsers() {
-        loading = true
+        isGettingUsers = true
 
         viewModelScope.launch {
             _state.value = repository.getAll()
-            loading = false
+            isGettingUsers = false
         }
     }
 
