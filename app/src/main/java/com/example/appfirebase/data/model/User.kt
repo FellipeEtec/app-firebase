@@ -14,8 +14,8 @@ data class User(
             this.firstName.isNotBlank() &&
             this.lastName.isNotBlank() &&
             android.util.Patterns.EMAIL_ADDRESS.matcher(this.email).matches() &&
-            this.phone.filter { it.isDigit() }.length in 10..11 &&
-            this.age in 13..100
+            this.phone.filter { it.isDigit() }.length == 11 &&
+            this.age in 13..120
         )
     }
 }
