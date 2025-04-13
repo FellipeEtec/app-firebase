@@ -5,9 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,13 +17,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.appfirebase.ui.ViewModelProvider
+import com.example.appfirebase.ui.component.button.PrimaryButton
+import com.example.appfirebase.ui.component.button.SecondaryButton
 import com.example.appfirebase.ui.viewmodel.UserInsertViewModel
 import com.example.appfirebase.util.PhoneVisualTransformation
 import kotlinx.coroutines.launch
@@ -121,7 +121,8 @@ fun UserInsertScreen(
                     else if (success == true) "Cadastrado com sucesso"
                     else "Não foi possível cadastrar"
             )
-            Button(
+
+            PrimaryButton(
                 onClick = {
                     coroutineScope.launch {
                         success = user.save()
@@ -129,15 +130,17 @@ fun UserInsertScreen(
 
                     submit = true
                 },
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Cadastrar",
-                    modifier = Modifier.padding(horizontal = 24.dp),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
+                text = "Cadastrar",
+                modifier = Modifier.width(200.dp)
+            )
+
+            SecondaryButton(
+                onClick = {
+                    navController.popBackStack()
+                },
+                text = "Voltar",
+                modifier = Modifier.width(200.dp)
+            )
         }
     }
 }

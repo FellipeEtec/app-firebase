@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,6 +40,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.appfirebase.data.model.User
 import com.example.appfirebase.ui.ViewModelProvider
+import com.example.appfirebase.ui.component.button.PrimaryButton
+import com.example.appfirebase.ui.component.button.SecondaryButton
 import com.example.appfirebase.ui.viewmodel.UserListViewModel
 import com.example.appfirebase.util.formatPhoneNumber
 import kotlinx.serialization.Serializable
@@ -130,38 +133,22 @@ fun UserListScreen(
                 }
             }
 
-            Button(
+            SecondaryButton(
                 onClick = {
                     userListViewModel.getUsers()
                 },
-                enabled = !userListViewModel.loading,
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF6F6F6),
-                    contentColor = Color.Black
-                )
-            ) {
-                Text(
-                    text = "Recarregar a lista",
-                    modifier = Modifier.padding(horizontal = 24.dp),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
+                text = "Recarregar",
+                modifier = Modifier.width(200.dp),
+                enabled = !userListViewModel.loading
+            )
 
-            Button(
+            PrimaryButton(
                 onClick = {
                     navController.navigate(UserInsertScreen)
                 },
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Cadastrar Usuário",
-                    modifier = Modifier.padding(horizontal = 24.dp),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
+                text = "Novo Usuário",
+                modifier = Modifier.width(200.dp)
+            )
         }
 
         AnimatedVisibility(
