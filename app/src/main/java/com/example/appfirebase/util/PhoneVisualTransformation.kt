@@ -49,7 +49,7 @@ class PhoneVisualTransformation : VisualTransformation {
 
                 return when (safeOffset) {
                     in 1..4 -> safeOffset - 1   // Subtract 1 for opening parenthesis
-                    in 5..12 -> safeOffset - 3  // Subtract 3 for both parentheses and a space
+                    in 5..12 -> safeOffset - 4  // Subtract 3 for both parentheses and a space
                     else -> safeOffset - 4      // Subtract 4 for both parentheses, space, and hyphen
                 }
             }
