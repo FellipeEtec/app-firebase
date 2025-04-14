@@ -28,8 +28,8 @@ fun DetailsModal(
     val userPhoneNumber = remember {
         try {
             formatPhoneNumber(selectedUser.phone)
-        } catch (_: Exception) {
-            Log.e("UserDetailsModal", "User's phone number doesn't have 11 digits")
+        } catch (e: IllegalArgumentException) {
+            Log.e("UserDetailsModal", "User's phone number doesn't have 11 digits\n$e")
             "Nenhum"
         }
     }

@@ -29,6 +29,8 @@ import com.example.appfirebase.ui.viewmodel.UserInsertViewModel
 import com.example.appfirebase.util.PhoneVisualTransformation
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import kotlin.math.max
+import kotlin.math.min
 
 @Serializable
 object UserInsertScreen
@@ -100,7 +102,11 @@ fun UserInsertScreen(
                         user.updateUiState(user.state.copy(age = null))
                     else {
                         try {
-                            user.updateUiState(user.state.copy(age = it.toInt()))
+                            user.updateUiState(
+                                user.state.copy(
+                                    age = min(max(it.toInt(), 0), 120)
+                                )
+                            )
                         } catch (_: Exception) {}
                     }
                 },

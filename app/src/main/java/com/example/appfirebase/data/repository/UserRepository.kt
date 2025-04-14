@@ -1,5 +1,6 @@
 package com.example.appfirebase.data.repository
 
+import android.util.Log
 import com.example.appfirebase.data.model.User
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,7 +22,8 @@ class UserRepository(
         return try {
             collection.add(doc).await()
             true
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            Log.e("UserRepositoryInsert", e.toString())
             false
         }
     }
