@@ -1,5 +1,6 @@
 package com.example.appfirebase.ui.component.screen.user_list.details_layer
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -23,6 +25,16 @@ fun DetailsModal(
     modifier: Modifier,
     selectedUser: User
 ) {
+    val userPhoneNumber = remember {
+        try {
+            formatPhoneNumber(selectedUser.phone)
+        } catch (_: Exception) {
+            Log.e("UserDetailsModal", "User's phone number doesn't have 11 digits")
+            "Nenhum"
+        }
+    }
+
+
     Column(
         modifier = modifier
     ) {
@@ -71,7 +83,7 @@ fun DetailsModal(
 
             ModalItem(
                 title = "Telefone",
-                content = formatPhoneNumber(selectedUser.phone)
+                content = userPhoneNumber
             )
 
             ModalItem(
