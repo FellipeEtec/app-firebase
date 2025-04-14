@@ -2,12 +2,10 @@ package com.example.appfirebase.ui.component.screen.user_list.list_layer
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.example.appfirebase.data.model.User
 
 @Composable
@@ -35,8 +33,7 @@ fun ListContainer(
             else {
                 UserList(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(vertical = 14.dp),
+                        .fillMaxSize(),
                     userList = userList,
                     selectUser = selectUser
                 )

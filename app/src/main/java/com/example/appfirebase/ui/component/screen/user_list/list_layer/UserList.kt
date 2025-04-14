@@ -1,7 +1,7 @@
 package com.example.appfirebase.ui.component.screen.user_list.list_layer
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -16,8 +16,7 @@ fun UserList(
     selectUser: (User) -> Unit
 ) {
     LazyColumn(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = modifier
     ) {
         items(userList) { user ->
             ListItem(
@@ -25,7 +24,8 @@ fun UserList(
                     selectUser(user)
                 },
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
                 user = user
             )
         }

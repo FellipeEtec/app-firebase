@@ -12,12 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appfirebase.data.model.User
+import com.example.appfirebase.ui.theme.Design
 import com.example.appfirebase.util.formatPhoneNumber
 
 @Composable
@@ -57,7 +57,7 @@ fun DetailsModal(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    color = Color(0xFFF6F6F6),
+                    color = Design.Color.backgroundSecondary,
                     shape = RoundedCornerShape(8.dp)
                 )
                 .padding(

@@ -37,7 +37,7 @@ fun ListLayer(
         ListContainer(
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth(0.75f)
+                .fillMaxWidth(0.8f)
                 .padding(vertical = 14.dp),
             isGettingUsers = isGettingUsers,
             userList = userList,

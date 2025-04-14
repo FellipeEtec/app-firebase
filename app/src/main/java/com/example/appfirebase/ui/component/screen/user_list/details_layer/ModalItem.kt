@@ -5,6 +5,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.appfirebase.ui.theme.Design
 
 @Composable
 fun ModalItem(
@@ -14,7 +15,8 @@ fun ModalItem(
     Column {
         Text(
             text = title,
-            fontSize = 14.sp
+            fontSize = 14.sp,
+            color = Design.Color.foregroundSecondary
         )
         Text(
             text = content,

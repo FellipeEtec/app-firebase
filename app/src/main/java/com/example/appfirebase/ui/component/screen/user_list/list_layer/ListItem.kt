@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appfirebase.data.model.User
+import com.example.appfirebase.ui.theme.Design
 
 @Composable
 fun ListItem(
@@ -34,8 +35,8 @@ fun ListItem(
         Surface(
             modifier = Modifier.fillMaxSize(),
             shape = RoundedCornerShape(8.dp),
-            color = Color(0xFFF6F6F6),
-            contentColor = Color.Black
+            color = Design.Color.backgroundNeutral,
+            contentColor = Design.Color.foregroundNeutral
         ) {
             Text(
                 text = "${user.firstName} ${user.lastName}",
