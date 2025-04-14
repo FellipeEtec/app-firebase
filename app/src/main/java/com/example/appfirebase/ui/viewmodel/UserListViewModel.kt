@@ -1,5 +1,6 @@
 package com.example.appfirebase.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appfirebase.data.model.User
@@ -23,6 +24,13 @@ class UserListViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
     init {
-        getUsers()
+        repository.collection.addSnapshotListener { _, e ->
+            if (e != null) {
+                Log.w("UserListViewModel", "listen:error", e)
+                return@addSnapshotListener
+            }
+
+            getUsers()
+        }
     }
 }
